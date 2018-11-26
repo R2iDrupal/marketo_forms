@@ -1,0 +1,11 @@
+{
+    "name": "R2iDrupal/marketo_forms",
+    "description": "Marketo JS forms integration.",
+    "type": "drupal-module",
+    "license": "GPL-3.0",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.0.8",
+    },
+}
