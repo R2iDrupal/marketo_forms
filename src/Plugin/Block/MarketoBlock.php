@@ -47,6 +47,18 @@ class MarketoBlock extends BlockBase {
   /**
    * {@inheritdoc}
    */
+  public function blockValidate($form, FormStateInterface $form_state) {
+    parent::blockValidate($form, $form_state);
+
+    // Assert the form ID is valid
+    if (!preg_match('/^[A-Za-z0-9]+[A-Za-z0-9\\-_]*$/xi', $form_state->getValue('form_id'))) {
+      $form_state->setErrorByName('form_id', $this->t('%form_id is not a valid Marketo form ID.', ['%form_id' => $form_state->getValue('form_id')]));
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function blockSubmit($form, FormStateInterface $form_state) {
     $this->configuration['form_id'] = $form_state->getValue('form_id');
   }

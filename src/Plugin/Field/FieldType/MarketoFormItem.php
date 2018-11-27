@@ -59,4 +59,23 @@ class MarketoFormItem extends FieldItemBase {
 
     return $properties;
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getConstraints() {
+    $constraints = parent::getConstraints();
+
+    $constraint_manager = \Drupal::typedDataManager()->getValidationConstraintManager();
+    $constraints[] = $constraint_manager->create('ComplexData', [
+      'form_id' => [
+        'Regex' => [
+          'pattern' => '/^[A-Za-z0-9]+[A-Za-z0-9\\-_]*$/xi',
+          'message' => t('%name: can only contain letters, digits ([0-9]), hyphens ("-"), and underscores ("_"). Must begin with letter or digit.', ['%name' => $this->getFieldDefinition()->getLabel()]),
+        ],
+      ],
+    ]);
+
+    return $constraints;
+  }
 }

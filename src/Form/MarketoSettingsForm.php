@@ -80,6 +80,15 @@ class MarketoSettingsForm extends ConfigFormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     parent::validateForm($form, $form_state);
+
+    // Assert the hostname is valid
+    if (!preg_match('/^(?:[a-z0-9\-\.]|%[0-9a-f]{2})+$/xi', $form_state->getValue('marketo_host_key'))) {
+      $form_state->setErrorByName('marketo_host_key', $this->t('%host is not a valid hostname.', ['%host' => $form_state->getValue('marketo_host_key')]));
+    }
+    // Assert the API key is valid
+    if (!preg_match('/^[A-Za-z0-9]+[A-Za-z0-9\\-_]*$/xi', $form_state->getValue('marketo_api_key'))) {
+      $form_state->setErrorByName('marketo_api_key', $this->t('%api_key is not a valid API key.', ['%api_key' => $form_state->getValue('marketo_api_key')]));
+    }
   }
 
   /**
