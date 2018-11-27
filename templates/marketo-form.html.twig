@@ -4,5 +4,19 @@
  * Marketo JS embed form.
  */
 #}
-<script src="{{host}}/js/forms2/js/forms2.js"></script>
-<form id="mktoForm_{{form_id}}"></form>
+{% block form %}
+  {% if description %}
+    <p class="description">{{ description }}</p>
+  {% endif %}
+  {% if api_url %}
+    <script src="{{ api_url }}"></script>
+  {% endif %}
+  {% if form_id_safe %}
+    <form id="mktoForm_{{form_id_safe | clean_id}}"></form>
+  {% endif %}
+  {% if host and api_key and form_id %}
+    <script>
+      MktoForms2.loadForm("//{{ host }}", "{{ api_key }}", "{{ form_id }}");
+    </script>
+  {% endif %}
+{% endblock form %}
