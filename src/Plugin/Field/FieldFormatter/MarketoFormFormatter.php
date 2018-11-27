@@ -31,16 +31,16 @@ class MarketoFormFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
     $config = \Drupal::config('marketo_forms.settings');
-    $host = $config->get('marketo_host_key');
-    $api_key = $config->get('marketo_api_key');
+    $host = trim($config->get('marketo_host_key'));
+    $api_key = trim($config->get('marketo_api_key'));
 
     foreach ($items as $delta => $item) {
         $elements[$delta] = [
-          '#theme'     => 'marketo_form',
-          '#host' => $host,
+          '#theme'   => 'marketo_form',
+          '#host'    => $host,
           '#api_key' => $api_key,
           '#form_id' => $item->form_id,
-          '#locale'    => $langcode,
+          '#locale'  => $langcode,
         ];
     }
 
