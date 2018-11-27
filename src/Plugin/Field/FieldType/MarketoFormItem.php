@@ -55,7 +55,7 @@ class MarketoFormItem extends FieldItemBase {
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     $properties['form_id'] = DataDefinition::create('string')
-      ->setLabel(t('Marketo Form Data'));
+      ->setLabel(t('Marketo form ID'));
 
     return $properties;
   }

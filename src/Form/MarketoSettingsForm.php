@@ -58,15 +58,15 @@ class MarketoSettingsForm extends ConfigFormBase {
 
     $form['marketo_host_key'] = [
       '#type'          => 'textfield',
-      '#title'         => $this->t('Marketo Hostname'),
+      '#title'         => $this->t('Marketo hostname'),
       '#default_value' => $config->get('marketo_host_key'),
-      '#description'   => $this->t('The hostname for referencing Marketo code used on the site (Usually in format app-XXXX.marketo.com).'),
+      '#description'   => $this->t('The hostname for referencing Marketo code used on the site (usually in format app-XXXX.marketo.com).'),
       '#required'      => TRUE,
     ];
 
     $form['marketo_api_key'] = [
       '#type'          => 'textfield',
-      '#title'         => $this->t('Marketo API Key'),
+      '#title'         => $this->t('Marketo API key'),
       '#default_value' => $config->get('marketo_api_key'),
       '#description'   => $this->t('The Marketo Munchkin ID for the site (usually in format XXX-XXX-XXX).'),
       '#required'      => TRUE,
@@ -88,14 +88,12 @@ class MarketoSettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = $this->config('marketo_forms.settings');
 
-    // Enable/Disable plugin.
     $config->set('marketo_host_key', $form_state->getValue('marketo_host_key'))
       ->save();
     $config->set('marketo_api_key', $form_state->getValue('marketo_api_key'))
       ->save();
 
     parent::submitForm($form, $form_state);
-
   }
 
 }

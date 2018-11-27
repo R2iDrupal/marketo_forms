@@ -34,6 +34,7 @@ class MarketoFormSelectWidget extends WidgetBase {
     $element += [
       '#type'          => 'textfield',
       '#title'         => $this->t('Marketo Form'),
+      '#description'   => $this->t('The Marketo form ID (Usually in the format XXXX).'),
       '#default_value' => $form_id,
       '#required'      => TRUE,
     ];

@@ -16,7 +16,7 @@ use Drupal\marketo_forms\MarketoFormsCore;
  *
  * @Block(
  *   id = "marketo_forms",
- *   admin_label = @Translation("Marketo Form")
+ *   admin_label = @Translation("Marketo form")
  * )
  */
 class MarketoBlock extends BlockBase {
@@ -37,7 +37,7 @@ class MarketoBlock extends BlockBase {
     $form['form_id'] = [
       '#type'          => 'textfield',
       '#title'         => $this->t('Marketo Form'),
-      '#description'   => $this->t('Please choose a form you would like to display.'),
+      '#description'   => $this->t('The Marketo form ID (Usually in the format XXXX).'),
       '#default_value' => $this->configuration['form_id'],
       '#required'      => TRUE,
     ];
